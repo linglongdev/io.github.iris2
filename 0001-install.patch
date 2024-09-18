@@ -1,0 +1,49 @@
+From 91857af6ab1ae4bbaf83c8c2eb25ed94e4982c12 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 14 Sep 2024 14:19:27 +0800
+Subject: [PATCH] install
+
+---
+ iris.desktop | 11 +++++++++++
+ iris.pro     |  8 ++++++++
+ 2 files changed, 19 insertions(+)
+ create mode 100644 iris.desktop
+
+diff --git a/iris.desktop b/iris.desktop
+new file mode 100644
+index 0000000..9079b8e
+--- /dev/null
++++ b/iris.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=iris
++Name=iris
++Name[zh_CN]=iris
++Icon=iris
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=iris
++Version=1.0
+\ No newline at end of file
+diff --git a/iris.pro b/iris.pro
+index 33f75f1..f01202c 100644
+--- a/iris.pro
++++ b/iris.pro
+@@ -51,3 +51,11 @@ HEADERS  += src/MainWindow.h \
+     src/CatalogModel.h \
+     src/CatalogStore.h \
+     src/SqlHelper.h
++
++target.path = $$PREFIX/bin
++desktop.files = iris.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/scalable/apps/
++icons.files = img/icon/iris.svg
++
++INSTALLS += target desktop icons
+\ No newline at end of file
+-- 
+2.43.4
+

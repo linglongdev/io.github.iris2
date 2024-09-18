@@ -1,0 +1,29 @@
+version: "1"
+
+package:
+  id: io.github.iris2
+  name: iris2
+  version: 1.0.0.1
+  kind: app
+  description: |
+    Dispersion calculator
+
+command:
+  - /opt/apps/io.github.iris2/files/bin/iris
+
+base: org.deepin.foundation/23.0.0
+runtime: org.deepin.Runtime/23.0.1
+
+sources:
+  - kind: git
+    url: https://github.com/orion-project/iris2.git
+    version: master
+    commit: f8444ceb9d8286d7c9e68b22dba832763a6f88c1
+
+build: |
+  cd /project/linglong/sources/iris2.git
+  git apply ../../../0001-install.patch
+  cp img/icon/main.svg img/icon/iris.svg 
+  qmake -makefile PREFIX=${PREFIX} LIB_INSTALL_DIR=${PREFIX}/lib/${TRIPLET}
+  make -j$(nproc)
+  make install
